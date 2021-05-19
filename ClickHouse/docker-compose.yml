@@ -1,0 +1,15 @@
+version: '3'
+services:
+  clickhouse-server:
+    image: lunalabsltd/clickhouse-server:20.6.7.4-arm
+    restart: always
+    container_name: clickhouse-server
+    privileged: true
+    ports:
+      - 8123:8123
+      - 9000:9000
+      - 9009:9009
+    volumes:
+      - ./data:/var/lib/clickhouse
+      - ./users.xml:/etc/clickhouse-server/users.xml
+      - ./config.xml:/etc/clickhouse-server/config.xml
