@@ -1,7 +1,7 @@
 version: '3'
 services:
   mysql:
-    image: mysql/mysql-server:8.0.23-aarch64
+    image: mysql/mysql-server:8.0-amd64
     restart: always
     container_name: mysql
     environment:
