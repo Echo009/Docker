@@ -1,0 +1,41 @@
+version: '3'
+services:
+  zookeeper:
+    image: zookeeper:3.7.0
+    container_name: zookeeper
+    restart: always
+    hostname: zookeeper
+    networks:
+      - zookeeper_kafka
+    ports:
+      - 2181:2181
+      - 8088:8088
+    environment:
+      ZOO_MY_ID: 1
+    volumes:
+      - ./data/zookeeper:/data
+      - ./log/zookeeper:/datalog
+      - ./config/zoo.cfg:/conf/zoo.cfg
+  kafka:
+    image:  wurstmeister/kafka:2.13-2.7.0
+    container_name: kafka
+    restart: always
+    depends_on:
+      - zookeeper
+    networks:
+      - zookeeper_kafka
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: localhost
+      $KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_LOG_DIRS: /kafka/logs #数据存储目录
+    volumes:
+      - ./log/kafka:/opt/kafka/logs
+      - ./data/kafka:/kafka/logs
+      - /var/run/docker.sock:/var/run/docker.sock
+
+
+networks:
+  zookeeper_kafka:
