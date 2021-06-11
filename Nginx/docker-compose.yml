@@ -1,0 +1,12 @@
+version: '3'
+services:
+  web:
+    image: nginx:stable-perl
+    volumes:
+      - ./data/templates:/etc/nginx/templates
+      - ./data/html:/usr/share/nginx/html
+    ports:
+      - "80:80"
+    environment:
+      - NGINX_HOST=echo0.cn
+      - NGINX_PORT=80
