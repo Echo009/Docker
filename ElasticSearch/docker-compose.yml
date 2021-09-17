@@ -1,0 +1,17 @@
+version: '3'
+services:
+  elasticsearch:
+    image: elasticsearch:7.11.2
+    container_name: elastic_search
+    restart: always
+    volumes:
+      - ./config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./data:/usr/share/elasticsearch/data
+      - ./plugins:/usr/share/elasticsearch/plugins
+    ports:
+      - 9200:9200
+    environment:
+      - "ES_JAVA_OPTS=-Xms64m -Xmx512m"
+      - "discovery.type=single-node"
+      - "COMPOSE_PROJECT_NAME=elasticsearch-server"
+
