@@ -1,7 +1,7 @@
 version: '3'
 services:
   elasticsearch:
-    image: elasticsearch:7.11.2
+    image: elasticsearch:7.14.1
     container_name: elastic_search
     restart: always
     volumes:
