@@ -6,7 +6,4 @@ http.cors.enabled: true
 http.cors.allow-origin: "*"
 http.cors.allow-headers: "Authorization,X-Requested-With,Content-Length,Content-Type"
 node.master: true
-reindex.remote.whitelist: ['other:9200']
-
-xpack.security.enabled: false
-xpack.security.authc.api_key.enabled: false
+reindex.remote.whitelist: ['other:9200','other:9300']

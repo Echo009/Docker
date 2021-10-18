@@ -1,7 +1,7 @@
 version: '3'
 services:
   elasticsearch:
-    image: elasticsearch:7.14.1
+    image: elasticsearch:6.4.2
     container_name: elastic_search
     restart: always
     volumes:
@@ -10,6 +10,7 @@ services:
       - ./plugins:/usr/share/elasticsearch/plugins
     ports:
       - 9200:9200
+      - 9300:9300
     environment:
       - "ES_JAVA_OPTS=-Xms64m -Xmx512m"
       - "discovery.type=single-node"
