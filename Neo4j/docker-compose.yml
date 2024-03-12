@@ -1,0 +1,19 @@
+## https://neo4j.com/docs/operations-manual/current/docker/configuration/
+version: '3'
+services:
+  neo4j-server:
+    image: neo4j:5.14.0
+    restart: always
+    container_name: neo4j
+    privileged: true
+    environment:
+      NEO4J_AUTH: neo4j/77dd60298885
+    ports:
+      - 7474:7474
+      - 7687:7687
+    volumes:
+      - ./data:/var/lib/neo4j/data
+      - ./logs:/var/lib/neo4j/logs
+      - ./conf:/var/lib/neo4j/conf
+
+
