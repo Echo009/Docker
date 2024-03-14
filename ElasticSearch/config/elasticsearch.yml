@@ -10,3 +10,4 @@ reindex.remote.whitelist: ['other:9200']
 
 xpack.security.enabled: false
 xpack.security.authc.api_key.enabled: false
+cluster.routing.allocation.disk.watermark.flood_stage: 99%

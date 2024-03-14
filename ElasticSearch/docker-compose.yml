@@ -7,11 +7,12 @@ services:
     volumes:
       - ./config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
       - ./data:/usr/share/elasticsearch/data
+      - ./logs:/usr/share/elasticsearch/logs
       - ./plugins:/usr/share/elasticsearch/plugins
     ports:
       - 9200:9200
     environment:
-      - "ES_JAVA_OPTS=-Xms64m -Xmx512m"
+      - "ES_JAVA_OPTS=-Xms1g -Xmx4g"
       - "discovery.type=single-node"
       - "COMPOSE_PROJECT_NAME=elasticsearch-server"
 
